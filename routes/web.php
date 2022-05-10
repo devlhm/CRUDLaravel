@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use PhpParser\JsonDecoder;
 
 Route::get('/', function () {
     return view('inicio');
@@ -31,6 +32,11 @@ Route::post('/cadastrar-produto', function (Request $request) {
         alert('Produto criado com sucesso');
         location.href='/';
     </script>";
+});
+
+Route::get('/listar-produtos', function () {
+    $produtos = json_decode(Produto::all(), true);
+    return view('listar-todos', ['produtos' => $produtos]);
 });
 
 Route::get('/listar-produto/{id}', function ($id) {

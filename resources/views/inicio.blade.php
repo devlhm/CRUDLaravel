@@ -10,41 +10,47 @@
 </head>
 
 <body class="d-flex flex-column align-items-center">
-    <h1>Produtos</h1>
+    <h1 style="font-size: 5em;">Produtos</h1>
 
     <div class="d-flex justify-content-center mt-5">
 
-        <form action="/cadastrar-produto" method="POST" class="m-5">
+        <form action="/cadastrar-produto" method="POST" class="m-5 card p-3 text-center col-5">
             @csrf
-            <h1>Cadastro</h1>
+            <h1 class="card-header">Cadastro</h1>
 
-            <label for="lblNome">Nome:</label>
-            <input type="text" name="nome">
-            <br><br>
+            <div class="card-body container">
+                <div class="row mt-2 mb-2">
+                    <label for="lblNome">Nome:</label>
+                    <input class="col-10 mx-auto" type="text" name="nome">
+                </div>
+                <div class="row mt-2 mb-2">
+                    <label for="lblValor">Valor:</label>
+                    <input class="col-10 mx-auto" type="number" name="valor">
+                </div>
+                <div class="row mt-2 mb-2">
+                    <label for="lblQuantidade">Quantidade:</label>
+                    <input class="col-10 mx-auto" type="number" name="estoque">
+                </div>
+                <button class="row btn btn-primary mt-3 col-5 fs-4">Cadastrar</button>
+            </div>
 
-            <label for="lblValor">Valor:</label>
-            <input type="text" name="valor">
-            <br><br>
-
-            <label for="lblQuantidade">Quantidade:</label>
-            <input type="text" name="estoque">
-            <br><br>
-
-            <button>Cadastrar</button>
         </form>
 
         <div class="m-5 card p-3 text-center">
             @csrf
 
-            <h1 class="card-header">Listar Produto</h1>
+            <h1 class="card-header">Listar Produto(s)</h1>
 
 
-            <div class="card-body">
-                <div class="mt-2 mb-2">
-                    <label for="id" class="mb-4">ID do Produto</label>
-                    <input type="text" name="id-produto" id="id-produto">
+            <div class="card-body container">
+                <button class="row btn btn-primary mt-3 mb-2 col fs-4" style="min-width: 90px" onclick="location.href = '/listar-produtos/'">Listar Todos os Produtos</button>
+                <hr>
+                <div class="row mt-2 mb-2">
+                    <label for="id-produto">ID do Produto:</label>
+                    <input class="col-10 mx-auto" type="number" name="id-produto" id="id-produto">
                 </div>
-                <button class="btn btn-primary col-5 fs-4" onclick="location.href = '/listar-produto/' + document.getElementById('id-produto').value">Listar</button>
+                <button class="row btn btn-primary mt-3 col-5 fs-4" style="min-width: 90px" onclick="location.href = '/listar-produto/' + document.getElementById('id-produto').value">Listar</button>
+
             </div>
         </div>
     </div>
