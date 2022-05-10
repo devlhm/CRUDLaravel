@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;   
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,27 +20,30 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::post('/cadastrar-produto', function(Request $request){
+Route::post('/cadastrar-produto', function (Request $request) {
     Produto::create([
         'nome' => $request->nome,
         'valor' => $request->valor,
         'estoque' => $request->estoque
     ]);
 
-    echo "Produto criado com sucesso";
-}); 
+    echo "<script>
+        alert('Produto criado com sucesso');
+        location.href='/';
+    </script>";
+});
 
-Route::get('/listar-produto/{id}', function($id) {
+Route::get('/listar-produto/{id}', function ($id) {
     $produto = Produto::find($id);
     return view('listar', ['produto' => $produto]);
 });
 
-Route::get('/editar-produto/{$id}', function($id) {
+Route::get('/editar-produto/{$id}', function ($id) {
     $produto = Produto::find($id);
     return view('editar', ['produto' => $produto]);
 });
 
-Route::post('/editar-produto/{id}', function(Request $request, $id) {
+Route::post('/editar-produto/{id}', function (Request $request, $id) {
     $produto = Produto::find($id);
 
     $produto->update([
@@ -49,12 +52,18 @@ Route::post('/editar-produto/{id}', function(Request $request, $id) {
         'estoque' => $request->estoque
     ]);
 
-    echo "Produto editado com sucesso!";
+    echo "<script>
+        alert('Produto editado com sucesso');
+        location.href='/';
+    </script>";
 });
 
-Route::get('/deletar-produto/{id}', function($id) {
+Route::get('/deletar-produto/{id}', function ($id) {
     $produto = Produto::find($id);
     $produto->delete();
 
-    echo "Produto excluído com sucesso!";
+    echo "<script>
+        alert('Produto editado com sucesso');
+        location.href='/';
+    </script>";
 });
