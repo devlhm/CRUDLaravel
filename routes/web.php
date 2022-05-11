@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
-use PhpParser\JsonDecoder;
 
 Route::get('/', function () {
     return view('inicio');
@@ -69,7 +68,7 @@ Route::get('/deletar-produto/{id}', function ($id) {
     $produto->delete();
 
     echo "<script>
-        alert('Produto editado com sucesso');
+        alert('Produto deletado com sucesso');
         location.href='/';
     </script>";
 });

@@ -11,32 +11,30 @@
 
 <body class="d-flex flex-column align-items-center">
     <h1 style="font-size: 5em;">Produtos</h1>
-
-    <div class="d-flex justify-content-center mt-5">
-        <form action="/editar-produto/{{ $produto-> id }}" method="post" class="d-inline">
+    <div class="d-flex justify-content-center m-5 mb-2 card p-3 text-center col-2">
+        <h1 class="card-header">Produto</h1>
+        <form action="/editar-produto/{{ $produto-> id }}" method="post" class="card-body container">
             @csrf
 
+            <div class="row my-2">
+                <label for="lblNome">Nome:</label>
+                <input type="text" name="nome" value="{{ $produto->nome }} ">
+            </div>
 
-            <label for="lblNome">Nome:</label>
-            <input type="text" name="nome" value="{{ $produto->nome }} ">
-            <br><br>
+            <div class="row my-2">
+                <label for="lblValor">Valor:</label>
+                <input type="text" name="valor" value="{{ $produto->valor }}">
+            </div>
 
-            <label for="lblValor">Valor:</label>
-            <input type="text" name="valor" value="{{ $produto->valor }}">
-            <br><br>
-
-            <label for="lblQuantidade">Quantidade:</label>
-            <input type="text" name="estoque" value="{{ $produto->estoque }}">
-            <br><br>
-            <button>Salvar Edições</button>
+            <div class="row my-2">
+                <label for="lblQuantidade">Quantidade:</label>
+                <input type="text" name="estoque" value="{{ $produto->estoque }}">
+            </div>
+            <button class="row btn btn-primary mt-3 col-8 fs-5">Salvar Edições</button>
         </form>
 
     </div>
-    <button onclick="location.href='/'">Voltar</button>
-    <button onclick="location.href='/deletar-produto/{{ $produto->id }}'">Deletar</button>
-    
-    
-
+    <button class="btn btn-secondary my-2 fs-5" onclick="location.href='/'">Voltar</button>
+    <button class="btn btn-danger fs-5" onclick="location.href='/deletar-produto/{{ $produto->id }}'">Deletar</button>
 </body>
-
 </html>
