@@ -25,11 +25,15 @@
                 </div>
                 <div class="row mt-2 mb-2">
                     <label for="lblValor">Valor:</label>
-                    <input class="col-10 mx-auto" type="number" name="valor">
+                    <input class="col-10 mx-auto" type="number" min="0" name="valor">
                 </div>
                 <div class="row mt-2 mb-2">
                     <label for="lblQuantidade">Quantidade:</label>
-                    <input class="col-10 mx-auto" type="number" name="estoque">
+                    <input class="col-10 mx-auto" type="number" min="1" name="estoque">
+                </div>
+                <div class="row mt-2 mb-2">
+                    <label for="lblQuantidade">ID do Fornecedor:</label>
+                    <input class="col-10 mx-auto" type="number" min="0" name="fornecedor_id">
                 </div>
                 <button class="row btn btn-primary mt-3 col-5 fs-4">Cadastrar</button>
             </div>
