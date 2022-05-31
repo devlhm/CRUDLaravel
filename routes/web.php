@@ -14,17 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Models\Produto;
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('inicio');
+    $fornecedores = json_decode(Fornecedor::all(), true);
+    $produtos = json_decode(Produto::all(), true);
+    
+    return view('inicio', ['fornecedores' => $fornecedores, 'produtos' => $produtos]);
 });
 
 Route::post('/cadastrar-produto', function (Request $request) {
     Produto::create([
         'nome' => $request->nome,
         'valor' => $request->valor,
-        'estoque' => $request->estoque
+        'estoque' => $request->estoque,
+        'fornecedor_id' => $request->fornecedor_id
     ]);
 
     echo "<script>

@@ -17,16 +17,23 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Estoque</th>
                 <th scope="col">Valor</th>
+                <th scope="col">Fornecedor</th>
             </tr>
         </thead>
-        <?php for ($i=0; $i < count($produtos); $i++) { 
-            echo "<tr><td>".$produtos[$i]["id"]."</td><td>".$produtos[$i]["nome"]."</td><td>".$produtos[$i]["estoque"]."</td><td>".$produtos[$i]["valor"]."</td></tr>";
-        }?>
-        
+        <?php
+
+        use App\Models\Fornecedor;
+
+        for ($i = 0; $i < count($produtos); $i++) {
+            echo "<tr><td>" . $produtos[$i]["id"] . "</td><td>" . $produtos[$i]["nome"] . "</td><td>" . $produtos[$i]["estoque"] . "</td><td>" . $produtos[$i]["valor"] . "</td><td>" . Fornecedor::find(intval($produtos[$i]["fornecedor_id"]))->nome . "</td></tr>";
+        }
+
+        ?>
+
     </table>
 
-        <button class="btn btn-secondary fs-2" onclick="location.href='/'">Voltar</button>
- 
+    <button class="btn btn-secondary fs-2" onclick="location.href='/'">Voltar</button>
+
 </body>
 
 </html>

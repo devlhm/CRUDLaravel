@@ -23,12 +23,17 @@
 
             <div class="row my-2">
                 <label for="lblValor">Valor:</label>
-                <input type="text" name="valor" value="{{ $produto->valor }}">
+                <input type="number" name="valor" value="{{ $produto->valor }}">
             </div>
 
             <div class="row my-2">
                 <label for="lblQuantidade">Quantidade:</label>
-                <input type="text" name="estoque" value="{{ $produto->estoque }}">
+                <input type="number" name="estoque" value="{{ $produto->estoque }}">
+            </div>
+
+            <div class="row my-2">
+                <label for="lblFornecedor">ID Fornecedor:</label>
+                <input type="number" name="fornecedor_id" value="{{ $produto->fornecedor_id }}">
             </div>
             <button class="row btn btn-primary mt-3 col-8 fs-5">Salvar Edições</button>
         </form>

@@ -20,20 +20,27 @@
 
             <div class="card-body container">
                 <div class="row mt-2 mb-2">
-                    <label for="lblNome">Nome:</label>
+                    <label for="nome">Nome:</label>
                     <input class="col-10 mx-auto" type="text" name="nome">
                 </div>
                 <div class="row mt-2 mb-2">
-                    <label for="lblValor">Valor:</label>
+                    <label for="valor">Valor:</label>
                     <input class="col-10 mx-auto" type="number" min="0" name="valor">
                 </div>
                 <div class="row mt-2 mb-2">
-                    <label for="lblQuantidade">Quantidade:</label>
+                    <label for="estoque">Quantidade:</label>
                     <input class="col-10 mx-auto" type="number" min="1" name="estoque">
                 </div>
                 <div class="row mt-2 mb-2">
-                    <label for="lblQuantidade">ID do Fornecedor:</label>
-                    <input class="col-10 mx-auto" type="number" min="0" name="fornecedor_id">
+                    <label for="fornecedor_id">Nome do Fornecedor:</label>
+                    <!-- <input class="col-10 mx-auto" type="number" min="0" name="fornecedor_id"> -->
+                    <select class="col-10 mx-auto" name="fornecedor_id">
+                        <?php
+                            for($i = 0; $i < count($fornecedores); $i++) {
+                                echo "<option value=".$fornecedores[$i]["id"].">".$fornecedores[$i]["nome"]."</option>";
+                            }
+                        ?>
+                    </select>
                 </div>
                 <button class="row btn btn-primary mt-3 col-5 fs-4">Cadastrar</button>
             </div>
@@ -50,8 +57,14 @@
                 <button class="row btn btn-primary mt-3 mb-2 col fs-4" style="min-width: 90px" onclick="location.href = '/listar-produtos/'">Listar Todos os Produtos</button>
                 <hr>
                 <div class="row mt-2 mb-2">
-                    <label for="id-produto">ID do Produto:</label>
-                    <input class="col-10 mx-auto" type="number" name="id-produto" id="id-produto">
+                    <label for="id-produto">Produto:</label>
+                    <select class="col-10 mx-auto" name="id-produto" id="id-produto">
+                        <?php
+                            for($i = 0; $i < count($produtos); $i++) {
+                                echo "<option value=".$produtos[$i]["id"].">".$produtos[$i]["nome"]."</option>";
+                            }
+                        ?>
+                    </select>
                 </div>
                 <button class="row btn btn-primary mt-3 col-5 fs-4" style="min-width: 90px" onclick="location.href = '/listar-produto/' + document.getElementById('id-produto').value">Listar</button>
 
