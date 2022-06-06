@@ -13,7 +13,7 @@
     <h1 style="font-size: 5em;">Produtos</h1>
     <div class="d-flex justify-content-center m-5 mb-2 card p-3 text-center col-2">
         <h1 class="card-header">Produto</h1>
-        <form action="/editar-produto/{{ $produto-> id }}" method="post" class="card-body container">
+        <form action="/editar-produto/{{ $produto->id }}" method="post" class="card-body container">
             @csrf
 
             <div class="row my-2">
@@ -32,8 +32,15 @@
             </div>
 
             <div class="row my-2">
-                <label for="lblFornecedor">ID Fornecedor:</label>
-                <input type="number" name="fornecedor_id" value="{{ $produto->fornecedor_id }}">
+                <label for="fornecedor_id">Nome do Fornecedor:</label>
+                <!-- <input class="col-10 mx-auto" type="number" min="0" name="fornecedor_id"> -->
+                <select class="col-10 mx-auto" name="fornecedor_id">
+                    <?php
+                    for ($i = 0; $i < count($fornecedores); $i++) {
+                        echo "<option value=" . $fornecedores[$i]["id"] . ">" . $fornecedores[$i]["nome"] . "</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <button class="row btn btn-primary mt-3 col-8 fs-5">Salvar Edições</button>
         </form>
@@ -42,4 +49,5 @@
     <button class="btn btn-secondary my-2 fs-5" onclick="location.href='/'">Voltar</button>
     <button class="btn btn-danger fs-5" onclick="location.href='/deletar-produto/{{ $produto->id }}'">Deletar</button>
 </body>
+
 </html>

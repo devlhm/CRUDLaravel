@@ -45,7 +45,9 @@ Route::get('/listar-produtos', function () {
 
 Route::get('/listar-produto/{id}', function ($id) {
     $produto = Produto::find($id);
-    return view('listar', ['produto' => $produto]);
+    $fornecedores = json_decode(Fornecedor::all(), true);
+    
+    return view('listar', ['fornecedores' => $fornecedores, 'produto' => $produto]);
 });
 
 Route::get('/editar-produto/{$id}', function ($id) {
